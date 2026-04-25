@@ -58,14 +58,24 @@ __Tools:__
 
 ## Authors
 __Contributor:__  Kayla Ngo  
-__Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; Worked alongside with Gianna D.  
+__Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; worked alongside with Gianna D.  
   
 __Contributor:__ Gianna Davila  
-__Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; Worked alongside with kayla N.  
+__Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; worked alongside with Kayla N.  
   
-__Contributor:__  Kevin Do
-__Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; Worked Alongside Alexis (?).
+__Contributor:__  Kevin Do  
+__Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; worked alongside with Alexis (?).
 
 __Contributor:__  
-__Contributions:__ 
+__Contributions:__   
+
+__Contributor:__  
+__Contributions:__   
+
+__Contributor:__  
+__Contributions:__   
+
+__Contributor:__  
+__Contributions:__   
+
 __Submission for Final Project__
