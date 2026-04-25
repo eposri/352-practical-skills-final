@@ -64,7 +64,7 @@ __Contributor:__ Gianna Davila
 __Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; Worked alongside with kayla N.  
   
 __Contributor:__  Kevin Do
-__Contributions:__ Certificate Authority Setup on an Apache Web Server, node.js Web Server, and Microsoft IIS Web Server; Worked Alongside Alexis (?).
+__Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; Worked Alongside Alexis (?).
 
 __Contributor:__  
 __Contributions:__ 
