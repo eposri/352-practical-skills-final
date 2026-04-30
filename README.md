@@ -91,9 +91,9 @@ __Tools:__
 __Files:__
 
 6. PGP E-mail  
-__OS:__   
-__Tools:__ 
-__Files:__
+__OS:__ Linux (Ubuntu)  
+__Tools:__ Mozilla Thunderbird (used for sending & recieving emails), Built-in OpenPGP in Thunderbird (for encryption & digital signatures)
+__Files:__ Public key files(.asc), Private keys(stored safely from Thunderbird), Encrypted & digitally signed email messages used for testing communication between two accounts
 
 7. DNSSEC Server  
 __OS:__   
@@ -126,7 +126,7 @@ __Contributor:__  Jesse
 __Contributions:__   
 
 __Contributor:__  Maritza Esparza  
-__Contributions:__   
+__Contributions:__ Configured PGP secure email communication using Mozilla Thunderbird with OpenPGP; generated public and private key pairs for two accounts; exported and exchanged public keys; enabled encryption and digital signatures; sent encrypted and signed emails and verified decryption and signature authenticity on the recipients end.  
 
 _Submission for Final Project_
 
