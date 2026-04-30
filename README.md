@@ -71,8 +71,8 @@ sudo ./bridge_stop.sh
 
 ## Configuration Environment
 1. CA System  
-__OS:__   
-__Tools:__  
+__OS:__ Ubuntu 
+__Tools:__  openssl, Apache2, node.js, Microsoft IIS
 __Files:__
 
 2. VPN Server  
