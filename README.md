@@ -108,7 +108,7 @@ __Files:__
 
 ## Authors
 __Contributor:__ Kevin Do  
-__Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; worked alongside with Alexis (?).
+__Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; worked alongside with Alexis Rabago.
 
 __Contributor:__ Alexis  
 __Contributions:__   
