@@ -24,7 +24,9 @@ California State University, Fullerton
 
 1. Create the environment where our CA will be in
 
+```
 cd && mkdir \-p myCA/signedcerts && mkdir myCA/private && cd myCA
+```
 
 \~/myCA : contains CA certificate, certificates database, generated certificates, keys, and requests
 
@@ -33,37 +35,40 @@ cd && mkdir \-p myCA/signedcerts && mkdir myCA/private && cd myCA
 \~/myCA/private : contains the private key
 
 To generate a CA and key:
-
+```
 openssl req \-x509 \-newkey rsa:2048 \-out cacert.pem \-outform PEM \-days 1825
+```
 
 Creating a Self-Signed Server Certificate : 
 
 Create a config file for the server
 
-![][image1]
+```
 
 export OPENSSL\_CONF=\~/myCA/exampleserver.cnf
+```
 
 To use this as default for signing.
 
 Generate CA and key : 
-
+```
 openssl req \-newkey rsa:1024 \-keyout tempkey.pem \-keyform PEM \-out tempreq.pem \-outform PEM
+```
 
 Turn temp key into server key
+```
 
 openssl rsa \< tempkey.pem \> server\_key.pem
-
+```
 Sign server CA with out own
-
+```
 export OPENSSL\_CONF=\~/myCA/caconfig.cnf
-
 openssl ca \-in tempreq.pem \-out server\_crt.pem
-
+```
 Remove temp credentials 
-
+```
 rm \-f tempkey.pem && rm \-f tempreq.pem
-
+```
 We now have the self-signed server application certificate, and key pair:
 
 server\_crt.pem : Server application certificate file
@@ -267,7 +272,7 @@ __OS:__ Ubuntu
 __Tools:__ openssl, Apache2, node.js, Microsoft IIS
 __Files:__ caconf.cnf, server.crt, server.key, server.pem, cacert.pem, cakey.pem, cacert.crt, iis-server.crt, iis-server.pem, iis-server.pfx
 
-2. VPN Server  
+3. VPN Server  
 __OS:__ Kali Linux  
 __Tools:__ OpenVPN (2.7), EasyRSA3, bridge-utils  
 __Files:__ bridge_start.sh, bridge_stop.sh, client.conf, server.conf, ca.crt, ca.key, server.crt, server.key, client_0.crt, client_0.key
