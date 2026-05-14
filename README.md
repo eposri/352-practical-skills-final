@@ -270,7 +270,7 @@ sudo ./bridge_stop.sh
 1. CA System  
 __OS:__ Ubuntu   
 __Tools:__ openssl, Apache2, node.js, Microsoft IIS   
-__Files:__ caconf.cnf, server.crt, server.key, server.pem, cacert.pem, cakey.pem, cacert.crt, iis-server.crt, iis-server.pem, iis-server.pfx  
+__Files:__ caconf.cnf, server.crt, server.key, server.pem, cacert.pem, cakey.pem, cacert.crt, iis-server.crt, iis-server.pfx  
 
 3. VPN Server  
 __OS:__ Kali Linux  
