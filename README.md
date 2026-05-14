@@ -292,10 +292,11 @@ __OS:__ Linux (Ubuntu)
 __Tools:__ Mozilla Thunderbird (used for sending & recieving emails), Built-in OpenPGP in Thunderbird (for encryption & digital signatures)
 __Files:__ Public key files(.asc), Private keys(stored safely from Thunderbird), Encrypted & digitally signed email messages used for testing communication between two accounts
 
-7. DNSSEC Server  
-__OS:__   
-__Tools:__  
-__Files:__
+DNSSEC Server
+__OS:__ Ubuntu 24.04.2 LTS (WSL2)
+__Tools:__ BIND9 9.18.39, dnssec-keygen, dnssec-signzone, dig
+__Files:__ named.conf.local, cs352.local.zone, cs352.local.zone.signed,
+           Kcs352.local.+008+21740.key, Kcs352.local.+008+25623.key
 
 8. Kerberos  
 __OS:__   
@@ -321,6 +322,13 @@ __Contributions:__
 
 __Contributor:__  Jesse  
 __Contributions:__   
+
+__Contributor:__ Mohamed Alqubaisi
+__Contributions:__ DNSSEC-based DNS Server setup using BIND9 on Ubuntu 24.04 
+                   WSL2; generated ZSK and KSK key pairs using RSASHA256 algorithm; configured 
+                   authoritative DNS zone cs352.local; signed zone using dnssec-signzone; 
+                   verified DNSSEC signatures using dig queries confirming RRSIG and DNSKEY 
+                   records are present and valid.
 
 __Contributor:__  Maritza Esparza  
 __Contributions:__ Configured PGP secure email communication using Mozilla Thunderbird with OpenPGP; generated public and private key pairs for two accounts; exported and exchanged public keys; enabled encryption and digital signatures; sent encrypted and signed emails and verified decryption and signature authenticity on the recipients end.  
