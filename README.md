@@ -275,7 +275,7 @@ sudo ./bridge_stop.sh
 1. CA System  
 __OS:__ Ubuntu 
 __Tools:__  openssl, Apache2, node.js, Microsoft IIS
-__Files:__
+__Files:__ caconf.cnf, server.crt, server.key, server.pem, cacert.pem, cakey.pem, cacert.crt, iis-server.crt, iis-server.pem, iis-server.pfx
 
 2. VPN Server  
 __OS:__ Kali Linux  
@@ -313,7 +313,7 @@ __Contributor:__ Kevin Do
 __Contributions:__ Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; worked alongside with Alexis Rabago.
 
 __Contributor:__ Alexis  
-__Contributions:__   
+__Contributions:__  Certificate Authority Setup on an Apache Web Server, Node.js Web Server, and Microsoft IIS Web Server; worked alongside with Kevin Do.
 
 __Contributor:__  Kayla Ngo  
 __Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; worked alongside with Gianna D.  
