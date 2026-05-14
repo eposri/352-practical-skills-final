@@ -1,0 +1,116 @@
+; File written on Thu May 14 14:39:47 2026
+; dnssec_signzone version 9.18.39-0ubuntu0.24.04.3-Ubuntu
+cs352.local.		86400	IN SOA	ns1.cs352.local. admin.cs352.local. (
+					2026051502 ; serial
+					3600       ; refresh (1 hour)
+					1800       ; retry (30 minutes)
+					604800     ; expire (1 week)
+					86400      ; minimum (1 day)
+					)
+			86400	RRSIG	SOA 8 2 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					Z/hA23xYLTryJUbG0oeYWbFJZNeFvSlt6qgI
+					PLDgXzZPj2dEUTvkBxZpRNJiH2U/Pe7l+vcZ
+					ly0c6p8f83d7GWtUrsYn2u5AQTX6+Ygv/2p0
+					y7k9OrMM7/hKJZpawH/DTQbpoVuB4wqKdRLc
+					yOeXUkV/7bZAr+0rskLdqOaGtik= )
+			86400	NS	ns1.cs352.local.
+			86400	RRSIG	NS 8 2 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					tYUpp3We/ifPcaywLL+jEnh5VsgHg3VhQ3x0
+					qwVEGIsmMrkFqiPtDuz7VeOJkk37B1qWMJVU
+					WgwKT9a70XLuJWA8ZiFm4ETIyUItGQlLZRYZ
+					6drKkvpFYRcZR+zcSNJT2TnFfDdUjig7coOV
+					YTjEcatqwHQrmS4bpqnwyyLByFA= )
+			86400	DNSKEY	256 3 8 (
+					AwEAAc4RsR5Nq5dH3sZazbefNhKHxDk3u7GY
+					HKNmrlHPvoDk+gpU+j0NmuLAyqt0QJx1ycQi
+					6unrR1J/FROmqaG9zIv5ddz1XjJh/vOauWpx
+					7/hAlkkChmjIgp4/rOcveUM/BFuQaloZQLf9
+					4IuYmg6hMsz6MEykCn33kHKlRDmkIrM7
+					) ; ZSK; alg = RSASHA256 ; key id = 25623
+			86400	DNSKEY	257 3 8 (
+					AwEAAcLRgWRdbOOVdTdQO7mEK4RYFzfNOVrc
+					xVGcQF7RHfcaI5paOGkVn+MKXOPyFJL2MsDT
+					Lh4frZ8RurFzZB5E9diN7lzwSNHp+gFo4XgP
+					wR1LDPvNb7JAxWQS0RRx5FjkyCrDLgz+2wiq
+					uobdqMeRlucVVx61w8pL76kOa0FLeSZf9+dd
+					Fa2NjwsxQDHEYOvTj4EbJnhRDaq/BjJ7+hMk
+					Cgt1+NE8watr9IcB8b0kxoRWTzVeCXXw+meH
+					gR5Py15s5HFyxo0q0futtUjibM50Qkio4kMZ
+					khIgCAVPmFtiVUIQaR3tQO9T5WoOnD419cY+
+					luUmh3iyUuKTthBt8kHqJDE=
+					) ; KSK; alg = RSASHA256 ; key id = 21740
+			86400	RRSIG	DNSKEY 8 2 86400 (
+					20260613203947 20260514203947 21740 cs352.local.
+					Bbi4uzTN3Vgp9MnJnHFujBwKxbYV/LARW+ME
+					Wi7uqUfIfVQedYzMdhSjFjvdLGu2W/VyLVhC
+					GeZ001BhRo71I+UzP3QJCG1oY72UIJz/2oDs
+					cyGeMMznttqD5F3xg/VRRqAmj4Cyvp4R9aI4
+					A/75zZ4Aakzd6YvGa+yJq/erXysl3wxn/AMP
+					QBFlqhocKHYlgL1D3Qtn/Rl9rkktYhYVyHir
+					4JGnZQSH7t9tLvqzfvnFYl8u3MDE4Z4qSRFa
+					WzPC1y5begzpjZ/wfyNYh+4RQpNmKn6sp8ie
+					1aBxv7ykiXgqFBp3qW6WPfglnTzOEh2VOrTv
+					69F45y5l0U4Utw1XQw== )
+			86400	RRSIG	DNSKEY 8 2 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					DUib6LFEGaIScKR3uFGegZ45wOTQP16aubmX
+					TfUa3r4J7j/Ocqv1g6GJbvch4vJAqvZYTWUm
+					zse4m/oAikbhXMuLICZBv/0h5r47ma3Lc46y
+					SWVRVtMClJvBV7boQfsMofexPxM4uwsdAC26
+					Q9hyaLh3lJGyRljPa/7wKZSreOg= )
+			0	NSEC3PARAM 1 0 0 C55668F433485681
+			0	RRSIG	NSEC3PARAM 8 2 0 (
+					20260613203947 20260514203947 25623 cs352.local.
+					lyvhSHcmIxzbo3Fsxcr4DGtk+0KQbTFC0j0n
+					SRgVX+ugmjzVoQFDlDiuwBw0f8EKnS9MtumZ
+					VqfDqjzGTyzNW2fcQtezlYjVX4t7zt3oNRvT
+					+u6ZKsTnJHva9XuVcuOhNbgT4mCYn3uVjdg4
+					LvpQL5+XNZSonRUYf9XozJJziJw= )
+ns1.cs352.local.	86400	IN A	127.0.0.1
+			86400	RRSIG	A 8 3 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					jl5fpaFfd7JbGCEaxkiIMHg1Jaw06kK71si5
+					LZqn3c1Fpd0gIr4ix6FoUrIfxBroLsqVtydO
+					Op5oBRnQjuufAwv1Jub7BLTksKqyEN6/NGDQ
+					avdXGJ94E/Cwu0ZVB6w04SLrnJfGh4hZGVkc
+					g5EW86uxQrtWI4SLLi44bAy1ggs= )
+www.cs352.local.	86400	IN A	127.0.0.1
+			86400	RRSIG	A 8 3 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					lWq5cNOqkRQ2BEcBHwP6J4ooa51u0gyUoedI
+					xSkqv+u6X0E+qkvrLYAMeajwlkc4WnIZNGdr
+					76yuJ/IfyiVthJZpyY6nZuKaLXrr8oz+vdZ1
+					te4ZXkcyA6VJqV0JPEVqjzl2f8HeV8jgdOnD
+					KGu3O/1yB57+xF9yejXumpKc+js= )
+1QRAQ3V9MAOF6E3L4TTI1ALBCCUO5NBJ.cs352.local. 86400 IN NSEC3 1 1 0 C55668F433485681 (
+					DD4A7UEJMJR7NKBTFLQK9HJCT06O2H1R
+					NS SOA RRSIG DNSKEY NSEC3PARAM )
+			86400	RRSIG	NSEC3 8 3 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					rcdfBs4gox3TmhvwhFmyLHESXsC51BoJE+MD
+					39DXWCsDU7h42OB29a8Hac2C422k3LY4Mw9W
+					yEXem1SUiqVK2hCQt0N+enjZGW1LwsNfNR5A
+					sUapdPUUsCeXjyFYduk5dzSQQ8ToJxcDSO7D
+					yUZTlJ03oa4ovdGhO+OPzAqR3xY= )
+DD4A7UEJMJR7NKBTFLQK9HJCT06O2H1R.cs352.local. 86400 IN NSEC3 1 1 0 C55668F433485681 (
+					Q6D80F9T10VFG134SJ5BO2P12C1UPVCF
+					A RRSIG )
+			86400	RRSIG	NSEC3 8 3 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					EM7GSSzRTT6cF9v6pZ9jdxiePuh9GCn96E9x
+					KFmHeu8ajs9hl5iw8MZmpYLyB8eJGGy0eOZf
+					7UbhAXpZpf6iTVb68akvYopxl8tr2XB0dVIi
+					SA2Pxt19yk4XyolBIywj8tZVKH6twWgW3fjz
+					+WjX1+M8GT2Rl6/k3+LADB5KXPE= )
+Q6D80F9T10VFG134SJ5BO2P12C1UPVCF.cs352.local. 86400 IN NSEC3 1 1 0 C55668F433485681 (
+					1QRAQ3V9MAOF6E3L4TTI1ALBCCUO5NBJ
+					A RRSIG )
+			86400	RRSIG	NSEC3 8 3 86400 (
+					20260613203947 20260514203947 25623 cs352.local.
+					M42b4X9wvC61m0ZmXJEjUqA9ErN1HqQLN2Wy
+					NrT6WR2FzKm2iYTNJLSRgIrNHtGMs2nE2Dkw
+					0ng9N2lgVDuFT0sjAQx9rQd1uH+wbbwiIL+Y
+					saNUWFSq8/AjZR51kNLzVMxGr1Sol0uc6Ko4
+					ZCeCfqRlAWYkigAH0LmqhPJJQOM= )

@@ -1,0 +1,13 @@
+$TTL 86400
+@   IN  SOA     ns1.cs352.local. admin.cs352.local. (
+                2026051501  ; Serial
+                3600        ; Refresh
+                1800        ; Retry
+                604800      ; Expire
+                86400 )     ; Minimum TTL
+
+@       IN  NS      ns1.cs352.local.
+ns1     IN  A       127.0.0.1
+www     IN  A       127.0.0.1
+$INCLUDE /etc/bind/zones/Kcs352.local.+008+21740.key
+$INCLUDE /etc/bind/zones/Kcs352.local.+008+25623.key
