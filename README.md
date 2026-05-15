@@ -318,7 +318,9 @@ __Contributor:__ Gianna Davila
 __Contributions:__ Bridged VPN server, SSH server, IPSec channel betweeen two systems; worked alongside with Kayla N.  
 
 __Contributor:__ Tom  
-__Contributions:__     
+__Contributions:__ Configured the IPSec site to site VPN tunnel between the CSUF and CALPOLY routers in Cisco Packet Tracer; built the three-router topology with HWIC-2T serial modules and Serial DCE cabling; activated the securityk9 license; set up 
+                   ISAKMP Phase 1 (AES-256, SHA, pre-shared key, DH Group 5) and IPSec Phase 2 transform set (ESP-AES, ESP-SHA-HMAC); applied the crypto map to both WAN interfaces; verified the tunnel with show crypto isakmp sa, show crypto ipsec sa, 
+                   and ESP packet inspection in Simulation Mode.    
 
 __Contributor:__  Jesse  
 __Contributions:__   
