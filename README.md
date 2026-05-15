@@ -8,19 +8,19 @@ California State University, Fullerton
 ## Practical Skills Cryptography
 
 ### Certificate Authority (CA) System
-## **1\. Overview**.
+## **Overview**.
 
 
 * **Objective:** To establish a Root CA and deploy signed certificates across three distinct web server environments.  
 * **The Trust Model:** We have 1 Root CA and 3 leaves (apache, [node.js](http://node.js), microsoft iis) 
 
-## **2\. Technical Environment**.
+## **Technical Environment**.
 
 * **Operating Systems:** Ubuntu 22.04/24.04 (CA/Apache/Node.js) and Windows 11 (IIS).  
 * **Software:** OpenSSL v3.0+, Node.js v20+, Apache2, IIS.  
 * **Network:** the CA, Apache, and [Node.js](http://Node.js) were on localhosts with different port numbers (insert port number here)
 
-## **3\. Setting up the CA**
+## **1\. Setting up the CA**
 
 1. Create the environment where our CA will be in
 
@@ -75,7 +75,42 @@ server\_crt.pem : Server application certificate file
 
 server\_key.pem : Server application key file
 
-## **4\. Setting up the Apache Server**
+
+## **2\. Setting up IIS server**
+
+To begin, we made sure our windows device had rootca.crt installed.  
+When installing the crt, we need to store it in local host, and have it placed in the trusted root certification authorities  
+![][image10] 
+
+On the ubuntu VM, we make the pfx file using the following commands below, the iis server crt and pfx were imported to the windows machine.
+
+```
+// make the csr and key
+openssl genrsa -out iis-server.key 2048
+openssl req -new -key iis-server.key -out iis-server.csr
+
+// sign with root ca
+openssl x509 -req -in iis-server.csr -CA thenameofwhateverrootca.pem -CAkey thenameofwhateverrootca.key -CAcreateserial -out iis-server.crt -days 365 -sha256
+
+// makes the pfx file
+openssl pkcs12 -export -out iis-server.pfx -inkey iis-server.key -in iis-server.crt 
+```
+
+Once done, we open IIS and click on "server certificates"
+
+We then import the iisserver.pfx here.  
+
+After that, we need to ensure that windows will accept it so we go to the default web site, click bindings, and add a https binding that uses the iis server certificate.  
+
+Side issues I ran into:  
+Because of the way the CA was signed, I had to make up fullerton and [mydomain.com](http://mydomain.com) in my hosts file. It kept on displaying connection unsecure otherwise.  
+![][image16]
+
+Another important note, you must set the host name during “binding” to the actual domain name, because i named mine test earlier and not [mydomain.com](http://mydomain.com), it couldn’t find it.   
+
+
+
+## **3\. Setting up the Apache Server**
 ```
 Sudo apt install apache2   
 Sudo systemctl start apache2  
@@ -102,7 +137,7 @@ Click on proceed and you'll be met with the same page, but with a slightly diffe
 ```
 sudo a2enmod headers (both these commands r to move it to another port)
 ```
-## **5\. Setting up [Node.js](http://Node.js) server**
+## **4\. Setting up [Node.js](http://Node.js) server**
 
 This is the set of commands we used to download the [Node.js](http://Node.js) files:  
 ```
@@ -171,42 +206,7 @@ server.listen(port, hostname, () \=\> {
 ```
 Now the page is now HTTPS, however the cert that we used isn't recognized by our webpage, so it gives us a warning. since we dont have the cert saved as a valid cert in our browser. We can justy proceed to the webpage since it is secure, its just that its not recognized by our browser.  
 
-
-## **6\. Setting up IIS server**
-
-To begin, we made sure our windows device had rootca.crt installed.  
-When installing the crt, we need to store it in local host, and have it placed in the trusted root certification authorities  
-![][image10] 
-
-On the ubuntu VM, we make the pfx file using the following commands below, the iis server crt and pfx were imported to the windows machine.
-
-```
-// make the csr and key
-openssl genrsa -out iis-server.key 2048
-openssl req -new -key iis-server.key -out iis-server.csr
-
-// sign with root ca
-openssl x509 -req -in iis-server.csr -CA thenameofwhateverrootca.pem -CAkey thenameofwhateverrootca.key -CAcreateserial -out iis-server.crt -days 365 -sha256
-
-// makes the pfx file
-openssl pkcs12 -export -out iis-server.pfx -inkey iis-server.key -in iis-server.crt 
-```
-
-Once done, we open IIS and click on "server certificates"
-
-We then import the iisserver.pfx here.  
-
-After that, we need to ensure that windows will accept it so we go to the default web site, click bindings, and add a https binding that uses the iis server certificate.  
-
-Side issues I ran into:  
-Because of the way the CA was signed, I had to make up fullerton and [mydomain.com](http://mydomain.com) in my hosts file. It kept on displaying connection unsecure otherwise.  
-![][image16]
-
-Another important note, you must set the host name during “binding” to the actual domain name, because i named mine test earlier and not [mydomain.com](http://mydomain.com), it couldn’t find it.   
-
-
-
-### VPN Server
+## **5\. VPN Server**
 Key Generation Process:
 ```
 # The following commands are from EasyRSA3 documentation:
@@ -256,16 +256,92 @@ sudo openvpn client.conf    # terminal 1 or different machine
 sudo ./bridge_stop.sh
 ```
 
-### SSH Server
+## **6\. Setting up the SSH Server**
 
-### IPSec Channel
+Setting up an SSH server so a user can securely connect without having to enter a password each time. SSH key-based auth uses two cryptographic keys:
+- a private key that stays on the client
+- a public key that gets placed on the server.
+
+This is asymmetric cryptography applied through the Ed25519 algorithm (Edwards-curve Digital Signature Algorithm over Curve25519), chosen for its optimal balance of security and performance compared to RSA and ECDSA.
+ 
+Both machines are set to **Bridged** network mode so they each receive their own IP on the local network and can communicate directly. NAT (the default) only gives VMs a private address visible to the hypervisor, not to other devices.
+ 
+### Setup
+ 
+**1. Install OpenSSH**
+On both machines:
+```
+sudo apt update
+sudo apt install openssh-server openssh-client
+```
+`openssh-client` to initiate connections and `openssh-server` to receive them.
+ 
+**2. Generate the SSH Key Pair (Client)**
+ 
+```
+ssh-keygen -t ed25519 -C "label"
+```
+ 
+This generates:
+- `~/.ssh/id_ed25519` — private key
+- `~/.ssh/id_ed25519.pub` — public key
+The key fingerprint displayed after generation (`SHA256:...`) is a SHA-256 hash of the public key, used to verify a key's identity without comparing the entire contents.
+ 
+**3. Verify Password Access is Enabled (Server)**
+ 
+```
+sudo sshd -T | grep passwordauthentication
+```
+Should return `passwordauthentication yes` — we need this to copy the key over initially.
+ 
+**4. Start the SSH Service (Server)**
+ 
+```
+sudo systemctl enable ssh
+sudo systemctl start ssh
+sudo systemctl status ssh
+```
+Should show `active (running)`.
+ 
+**5. Verify Connectivity**
+ 
+From the client, ping the server to confirm the machines can reach each other:
+```
+ping <SERVER-IP>
+```
+ 
+**6. Copy the Public Key to the Server**
+ 
+From the client:
+```
+ssh-copy-id -i ~/.ssh/id_ed25519.pub user@<SERVER-IP>
+```
+This places the public key into `~/.ssh/authorized_keys` on the server. It will ask for the password one final time.
+ 
+**7. Verify the Key Was Added (Server)**
+ 
+```
+cat ~/.ssh/authorized_keys
+```
+ 
+**8. Connect**
+ 
+From the client:
+```
+ssh user@<SERVER-IP>
+``` 
+---
+
+
+
+## **7\. IPSec Channel**
 A site-to-site IPSec VPN was built between two Cisco 2911 routers ("CSUF" and "CALPOLY") in Cisco Packet Tracer, connected through a third router that simulates the public Internet. Traffic between the two private LANs (192.168.1.0/24 and 192.168.2.0/24) is protected by ESP in tunnel mode using AES-256 encryption and SHA-HMAC integrity; Phase 1 (ISAKMP / IKEv1) authenticates the peers with a pre-shared key and Diffie-Hellman Group 5.
 
-## **1\. Topology**
+### **1\. Topology**
 
 Three 2911 routers (CSUF, CALPOLY, Internet), two 2960 switches, two PC-PT end devices. Each 2911 needs an HWIC-2T serial module installed (power off → drag module in → power on). Cable Serial DCE from Internet to each edge router, Copper Straight-Through from each edge router to its switch and from the switch to its PC. PC0 = 192.168.1.2/24 (gw .1), PC1 = 192.168.2.2/24 (gw .1).
 
-## **2\. Activate the security license**
+### **2\. Activate the security license**
 
 The default 2911 image has no `securityk9` feature set, so the crypto commands fail until it's enabled. On both edge routers:
 
@@ -278,7 +354,7 @@ reload
 
 Accept the EULA, then reload — the router boots with the security feature set active.
 
-## **3\. Internet router**
+### **3\. Internet router**
 
 No IPSec — just two serial interfaces forwarding between the WAN subnets:
 
@@ -294,7 +370,7 @@ interface Serial0/0/1
  no shutdown
 ```
 
-## **4\. CSUF router (CALPOLY is the mirror image)**
+### **4\. CSUF router (CALPOLY is the mirror image)**
 
 ```
 hostname CSUF
@@ -333,7 +409,7 @@ CALPOLY is the same with the addresses swapped: LAN `192.168.2.1/24`, WAN `102.1
 
 Note: the standard reference config has a `mode tunnel` line inside the transform set, but Packet Tracer doesn't accept it (its transform-set doesn't enter a submode). Tunnel mode is the default anyway, so it's safe to omit.
 
-## **5\. Bring up and verify**
+### **5\. Bring up and verify**
 
 The tunnel activates when interesting traffic hits the crypto map. From PC0:
 
@@ -348,11 +424,11 @@ show crypto isakmp sa     # state QM_IDLE, status ACTIVE  -> Phase 1 up
 show crypto ipsec sa      # non-zero #pkts encaps/decaps  -> Phase 2 carrying traffic
 ```
 
-### Pretty Good Privacy (PGP) E-mail
+## **8\. Pretty Good Privacy (PGP)**
 
-### DNSSEC-based DNS Server
+## **9\. DNSSEC-based DNS Server**
 
-### Kerberos
+## **10\. Kerberos**
 
 ## Configuration Environment
 1. CA System  
