@@ -519,6 +519,15 @@ No issues encountered after setup completion.
 - Account B → Account A encrypted/signed reply
 
 ---
+
+### PGP E-mail
+**OS:** Linux (Ubuntu)  
+**Tools:** Mozilla Thunderbird, Built-in OpenPGP Encryption  
+**Files:** Public key files (.asc), private keys securely stored in Thunderbird, encrypted and digitally signed email messages used for secure communication testing between both accounts.
+
+## **9\. DNSSEC-based DNS Server**
+
+## **10\. Kerberos**
 # Kerberos Setup (Ubuntu)
 
 ## Overview
@@ -579,14 +588,6 @@ klist
 ## How It Works
 The user logs in using kinit, the Kerberos server verifies the password, and then issues a ticket. The client uses this ticket instead of sending the password again, making authentication more secure.
 
-### PGP E-mail
-**OS:** Linux (Ubuntu)  
-**Tools:** Mozilla Thunderbird, Built-in OpenPGP Encryption  
-**Files:** Public key files (.asc), private keys securely stored in Thunderbird, encrypted and digitally signed email messages used for secure communication testing between both accounts.
-
-## **9\. DNSSEC-based DNS Server**
-
-## **10\. Kerberos**
 
 ## Configuration Environment
 1. CA System  
@@ -621,9 +622,9 @@ __Files:__ named.conf.local, cs352.local.zone, cs352.local.zone.signed,
            Kcs352.local.+008+21740.key, Kcs352.local.+008+25623.key
 
 8. Kerberos  
-__OS:__   
-__Tools:__  
-__Files:__
+__OS:__ Ubuntu Linux  
+__Tools:__ krb5-kdc, krb5-admin-server, krb5-user, kadmin.local, kinit, klist, systemctl  
+__Files:__ /etc/krb5.conf, /etc/hosts, /etc/krb5kdc/kadm5.acl, /var/lib/krb5kdc/principal  
 
 
 ## Authors
@@ -645,7 +646,7 @@ __Contributions:__ Configured the IPSec site to site VPN tunnel between the CSUF
                    and ESP packet inspection in Simulation Mode.    
 
 __Contributor:__  Jesse  
-__Contributions:__   
+__Contributions:__ Set up and configured the Kerberos server and client, installed required packages, configured hostname and system files, created and managed user principals, tested authentication using kinit and klist, and documented the setup process.
 
 __Contributor:__ Mohamed Alqubaisi
 __Contributions:__ DNSSEC-based DNS Server setup using BIND9 on Ubuntu 24.04 
