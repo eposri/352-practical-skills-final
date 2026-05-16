@@ -519,8 +519,65 @@ No issues encountered after setup completion.
 - Account B → Account A encrypted/signed reply
 
 ---
+# Kerberos Setup (Ubuntu)
 
-## Configuration Environment
+## Overview
+This project sets up a simple Kerberos server and client on one Ubuntu machine. The same system is used as both the server and client for simplicity. Kerberos provides secure authentication using tickets instead of repeatedly sending passwords.
+
+## System Info
+Hostname: kerberos-server.local  
+Realm: MYEXAMPLE.COM  
+User: kuser  
+
+## Setup
+
+Install Kerberos:
+sudo apt update
+sudo apt install krb5-kdc krb5-admin-server krb5-user -y
+
+Set hostname:
+sudo hostnamectl set-hostname kerberos-server.local
+
+Configure hosts file:
+sudo nano /etc/hosts
+
+Add:
+127.0.0.1 localhost
+127.0.1.1 kerberos-server.local kerberos-server
+
+Configure Kerberos:
+sudo dpkg-reconfigure krb5-config
+
+Use:
+Realm: MYEXAMPLE.COM  
+Server: kerberos-server.local  
+
+Create Kerberos database:
+sudo krb5_newrealm
+
+Allow admin access:
+sudo nano /etc/krb5kdc/kadm5.acl
+
+Add:
+*/admin *
+
+Start services:
+sudo systemctl start krb5-kdc
+sudo systemctl start krb5-admin-server
+
+Create user:
+sudo kadmin.local
+addprinc kuser
+quit
+
+Login (client):
+kinit kuser
+
+Verify ticket:
+klist
+
+## How It Works
+The user logs in using kinit, the Kerberos server verifies the password, and then issues a ticket. The client uses this ticket instead of sending the password again, making authentication more secure.
 
 ### PGP E-mail
 **OS:** Linux (Ubuntu)  
