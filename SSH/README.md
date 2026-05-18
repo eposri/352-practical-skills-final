@@ -80,7 +80,7 @@ ssh user@<SERVER-IP>
 ``` 
 
 ## Configuration Environment
-__OS:__   Ubuntu
+__OS:__   Ubuntu  
 __Tools:__  OpenSSH
 
 ## Author
