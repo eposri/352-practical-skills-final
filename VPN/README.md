@@ -64,7 +64,7 @@ sudo ./bridge_stop.sh
 
 ## Configuration Environment
 __OS:__ Kali Linux  
-__Tools:__ OpenVPN (2.7), EasyRSA3, bridge-utils, hping3 (for testing)
+__Tools:__ OpenVPN (2.7), EasyRSA3, bridge-utils, hping3 (for testing)  
 __Files:__ bridge_start.sh, bridge_stop.sh, client.conf, server.conf, ca.crt, ca.key, server.crt, server.key, client_0.crt, client_0.key, eth0_vm_kali.pcapng, windows_os_capt.pcapng
 
 ## Author
