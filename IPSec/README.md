@@ -94,10 +94,6 @@ First one or two pings time out during IKE negotiation, then replies come back. 
 show crypto isakmp sa     # state QM_IDLE, status ACTIVE  -> Phase 1 up
 show crypto ipsec sa      # non-zero #pkts encaps/decaps  -> Phase 2 carrying traffic
 ```
-## Configuration Environment
-__OS:__   
-__Tools:__  
-__Files:__
 
 ## Author
 __Contributor:__ Tom  
