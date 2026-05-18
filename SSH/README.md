@@ -80,9 +80,8 @@ ssh user@<SERVER-IP>
 ``` 
 
 ## Configuration Environment
-__OS:__   
-__Tools:__  
-__Files:__  
+__OS:__   Ubuntu
+__Tools:__  OpenSSH
 
 ## Author
 __Contributor:__ Gianna Davila  
